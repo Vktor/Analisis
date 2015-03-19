@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Operaciones con Matrices</title>
+	<link rel="stylesheet" href="font/fuentes.css">
+	<link rel="stylesheet" href="CSS/estilo.css">
+	<link rel="stylesheet" href="CSS/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+	<div class="redline"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="nombre">
+					<h1>
+						Algebra Matricial
+					</h1>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="parrafo">
+					<p>
+						Analisis Numerico 2015 <br>
+						<b>Nombre:</b> Hercules Carranza, Victor Alwin <br>
+						<b>Carnet:</b> HC09006 <br><br>
+
+						<b>Operaciónes con Matrices</b>
+						
+					</p>
+					<p>
+						Ingrese las dimensiones de las tablas a Operar.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 parrafo">
+				<h3>
+					Tabla #1
+				</h3>
+				<div class="row">
+					<div class="col-xs-5">
+						Ancho
+					</div>
+					<div class="col-xs-5 col-xs-offset-2">
+						Alto
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb1ancho" required>
+					</div>
+					<div class="col-xs-2 parrafo">
+						X
+					</div>
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb1alto" required>
+					</div>
+						</div>
+					</div>
+			<div class="col-xs-4 parrafo">
+				<h3>
+					Tabla #2
+				</h3>
+				<div class="row">
+					<div class="col-xs-5">
+						Ancho
+					</div>
+					<div class="col-xs-5 col-xs-offset-2">
+						Alto
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb2ancho" required>
+					</div>
+					<div class="col-xs-2 parrafo">
+						X
+					</div>
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb2alto" required>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 parrafo">
+				<h3>
+					Tabla #3
+				</h3>
+				<div class="row">
+					<div class="col-xs-5">
+						Ancho
+					</div>
+					<div class="col-xs-5 col-xs-offset-2">
+						Alto
+					</div>
+				</div> 
+				<div class="row">
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb3ancho" required>
+					</div>
+					<div class="col-xs-2 parrafo">
+						X
+					</div>
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb3alto" required>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-5">
+				<button type="button" class="btn btn-danger todo" id="aplicarTodo">
+					Crear Tablas
+				</button>
+			</div>
+		</div>
+		<!-- comienza la parte de las matrices -->
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="table-responsive" id="matrizUno">
+										
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="table-responsive" id="matrizDos">
+											
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="table-responsive" id="matrizTres">
+											
+				</div>
+			</div>
+		</div>
+		<!--comienzan las operaciones -->
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				<select id="selecoperation"class="form-control">
+					<option>Seleccione una operación</option>
+				 	<option value="suma">Sumar (+)</option>
+				 	<option value="resta">Restar (-)</option>
+				 	<option value="multiplicar">multiplicar (*)</option>
+				</select>
+			</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-5">
+				<button type="button" class="btn btn-danger todo" id="OperarTodo">
+					Aplicar Operacion
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<div class="table-responsive" id="MatrizResult" Style="background-color: white; text-align: center; margin-top: 5%; margin-bottom: 10%">
+											
+				</div>
+			</div>
+		</div>
+		<!-- comienza la parte de Gauss Jordan -->
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="parrafo">
+					<p>
+						<b>Inversa de una Matriz <br>
+						Por el metodo de Gauss Jordan </b>
+					</p>
+					<p>
+						Ingrese las dimensiones de la tabla a Operar.
+					</p>
+				</div>
+			</div>
+			<div class="col-xs-4 col-xs-offset-4 parrafo">
+				<div class="row">
+					<div class="col-xs-5">
+						Ancho
+					</div>
+					<div class="col-xs-5 col-xs-offset-2">
+						Alto
+					</div>
+				</div> 
+				<div class="row">
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb4ancho" required>
+					</div>
+					<div class="col-xs-2 parrafo">
+						X
+					</div>
+					<div class="col-xs-5 parrafo">
+						<input type="number" class="medida" id="tb4alto" required>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-5">
+				<button type="button" class="btn btn-danger todo" id="aplicarTodo2">
+					Crear Tabla
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<div class="table-responsive" id="matrizCuatro">
+										
+				</div>
+			</div>
+		</div>
+			<div class="col-xs-2 col-xs-offset-5">
+				<button type="button" class="btn btn-danger todo" id="OperarTodo2">
+					Aplicar Gauss Jordan
+				</button>
+			</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<div class="table-responsive" id="MatrizResult2" Style="background-color: white; text-align: center; margin-top: 5%; margin-bottom: 10%">
+											
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript" src="JS/jquery-min.js"></script>
+<script type="text/javascript" src="JS/bootstrap.js"></script>
+<script type="text/javascript" src="JS/miJavascript.js"></script>
+<!-- <script type="text/javascript" src="JS/GaussJordan.js"></script> -->
+</html> 
