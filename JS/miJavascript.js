@@ -202,7 +202,15 @@ function SumarMatriz(e){
 		//sumas de la matriz de 1 y 2
 		//window.alert("digamos que hice la suma de 1 y 2 "+ CeldaTotal);
 		for (var i =0 ; i <= CeldaTotal-1; i++) {
-			CeldaSuma[i] = parseInt($(""+celdaT1+i).val(), 10) + parseInt($(""+celdaT2+i).val(), 10);
+			console.log($(""+celdaT1+i).val());
+			if(isFloat($(""+celdaT1+i).val()) == true && isFloat($(""+celdaT2+i).val()) == true){
+				//isNaN($(""+celdaT1+i).val()) == false && isNaN($(""+celdaT2+i).val()) == false
+				//CeldaSuma[i] = Fracciones(''+(parseFloat($(""+celdaT1+i).val()) + parseFloat(dividir($(""+celdaT2+i).val()))));
+				CeldaSuma[i] = Fracciones(''+(parseFloat(dividir("1/2")) + parseFloat(dividir("1/5"))));
+				console.log("estoy Aqui");
+			}else{
+				CeldaSuma[i] = parseInt($(""+celdaT1+i).val(), 10) + parseInt($(""+celdaT2+i).val(), 10);
+			}
 			//window.alert(CeldaSuma[i]);
 		};
 
@@ -220,6 +228,10 @@ function SumarMatriz(e){
 	matrizResultado.columnas = matriz1.columnas;
 	$('#MatrizResult').html(matrizResultado.Crear(CeldaSuma));
 
+}
+
+function isFloat(n) {
+    return n % 1 != 0;
 }
 
 function RestarMatriz(e){
@@ -311,17 +323,6 @@ if (matriz.columnas == matriz2.filas) {
 }
 }
 
-function Quebrado(Quebra){
-	for (var i = Quebra.length - 1; i <= 0; i++) {
-		
-	};
-
-}
-
-function splitString(stringToSplit, separator) {
-  var arrayOfStrings = stringToSplit.split(separator);
- }
-
 
 var Miden = [];
 function MatrizIdentidad(e){
@@ -356,23 +357,8 @@ function GuardarM(e){
 	};
 }
 
-/*function OperarGauss(){
-	for (var i = 0; i <= matriz4.filas; i++) {
-		for (var j = 0; j < matriz4.columnas; j++) {
-			if (i==0) {
-				if (MGauss[i][j]!=1) {
-					MGauss[i][j]= MGauss[i][j]*1/MGauss[i][j];
-					for (var k = 1; k < matriz4.columnas-1; i++) {
-						MGauss[i][k] = MGauss[i][k] = 1/MGauss[i][j];
-					};
-				};
-			};
-		};
-	};
-}*/
 
 function matrix_invert(M){
-	console.log("hola");
     var i=0, ii=0, j=0, dim=matriz4.filas, e=0, t=0;
     var I = [], C = [];
     for(i=0; i<dim; i+=1){
@@ -403,9 +389,7 @@ function matrix_invert(M){
             e = C[i][i];
             
             if(e==0){return}
-        }
-        
-        
+        }      
         for(j=0; j<dim; j++){
             C[i][j] = C[i][j]/e; 
             I[i][j] = I[i][j]/e; 
@@ -422,4 +406,67 @@ function matrix_invert(M){
         }
     }
 return I;
+}
+
+function dividir(Frac){
+	var vec = Frac.split("/");
+	var numerador = parseFloat(vec[0], 10);
+    var denominador = parseFloat(vec[1], 10);
+    var respu = parseFloat(numerador/denominador);
+    return respu.toFixed(2);
+}
+
+function Fracciones (decimal){
+
+    var factor; 
+   // Finds the highest common factor of 2 numbers
+    function highestCommonFactor() {
+        for (factor = numerator; factor > 0; factor--) {
+            if ((numerator % factor == 0) && (denominator % factor == 0)) {
+                return factor;
+            }
+        }
+    }
+
+    // Enter a decimal to convert to a fraction
+    //var decimal = "'0.5'";
+    
+    // Split the decimal
+    var decimalArray = decimal.split(".");
+    
+    var leftDecimalPart = decimalArray[0];
+    var rightDecimalPart = decimalArray[1];
+    var algo = '"'+rightDecimalPart+'"';
+    
+    // Save decimal part only for later use
+    var decimalOnly = "0." + rightDecimalPart;
+    
+    // Find the decimal multiplier
+    var multiplier = "1";
+    
+    for (var i = 0; i < algo.length; i++) {
+        multiplier += "0";
+    }
+    
+    // Create numerator by multiplying the multiplier and decimal part together
+    var numerator = Number(multiplier) * Number(decimalOnly);
+    
+    var denominator = multiplier;
+    
+    // Find the highest common factor for the numerator and denominator
+    highestCommonFactor();
+    
+    // Simplify the fraction by dividing the numerator and denominator by the factor
+    var numerator = Number(numerator) / Number(factor);
+    var denominator = Number(denominator) / Number(factor);
+
+    // Output as a mixed number fraction (depending on input)
+    var mixedNumber = leftDecimalPart + " " + numerator + "/" + denominator;
+    
+    // Output as a proper fraction or improper fraction (depending on input)
+    var numerator = numerator + (leftDecimalPart * denominator);
+    var fraction = numerator + "/" + denominator;
+
+    // Display solution
+    return fraction;
 }
